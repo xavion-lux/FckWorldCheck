@@ -24,6 +24,7 @@ namespace FckWorldCheck
             }
             catch(Exception e)
             {
+                FckLogger.Error("Failed To Patch VRChatUtilityKit World Checks!");
                 FckLogger.Error(e.ToString());
             }
             

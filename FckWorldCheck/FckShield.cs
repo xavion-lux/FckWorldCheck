@@ -19,6 +19,7 @@ namespace FckWorldCheck
             }
             catch(Exception e)
             {
+                FckLogger.Error("Failed To Patch Harmony Protections!");
                 FckLogger.Error(e.ToString());
             }
 
