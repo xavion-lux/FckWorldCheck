@@ -8,17 +8,25 @@ namespace FckWorldCheck
 {
     internal class FckVRCUK
     {
+        internal static HarmonyLib.Harmony h;
         internal const int nPatches = 1;
         internal static void FckCheck()
         {
-            HarmonyLib.Harmony h = new HarmonyLib.Harmony(new System.Random((int)DateTime.Now.ToBinary()).Next(1000, 9999999).ToString());
+            try
+            {
+                h = new HarmonyLib.Harmony(new System.Random((int)DateTime.Now.ToBinary()).Next(1000, 9999999).ToString());
 
-            var p = typeof(VRChatUtilityKit.Utilities.VRCUtils).GetProperty("AreRiskyFunctionsAllowed", BindingFlags.Public | BindingFlags.Static).GetGetMethod(false);
+                var p = typeof(VRChatUtilityKit.Utilities.VRCUtils).GetProperty("AreRiskyFunctionsAllowed", BindingFlags.Public | BindingFlags.Static).GetGetMethod(false);
 
-            FckLogger.Msg("Patching VRChatUtilityKit...");
+                FckLogger.Msg("Patching VRChatUtilityKit...");
 
-            h.Patch(p, postfix: new HarmonyMethod(typeof(FckVRCUK).GetMethod("AreRiskyFunctionsAllowedPatch", BindingFlags.NonPublic | BindingFlags.Static)));
-
+                h.Patch(p, postfix: new HarmonyMethod(typeof(FckVRCUK).GetMethod(nameof(AreRiskyFunctionsAllowedPatch), BindingFlags.NonPublic | BindingFlags.Static)));
+            }
+            catch(Exception e)
+            {
+                FckLogger.Error(e.ToString());
+            }
+            
             var n = h.GetPatchedMethods();
             var count = 0;
             foreach (var k in n)
