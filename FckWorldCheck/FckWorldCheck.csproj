@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="FckEmm.cs" />
     <Compile Include="FckShield.cs" />
+    <Compile Include="FckVRCUK.cs" />
     <Compile Include="FckWorldCheck.cs" />
     <Compile Include="FckLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

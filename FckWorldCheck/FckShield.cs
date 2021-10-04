@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace FckWorldCheck
 {
-    class FckShield
+    internal class FckShield
     {
         internal static HarmonyLib.Harmony h;
         internal const int nPatches = 1;

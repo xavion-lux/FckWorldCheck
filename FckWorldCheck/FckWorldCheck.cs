@@ -3,24 +3,32 @@ using System.Linq;
 
 namespace FckWorldCheck
 {
-    class FckWorldCheck : MelonMod
+    internal class FckWorldCheck : MelonMod
     {
         public override void OnApplicationStart()
         {
             FckLogger.Init();
-            FckLogger.Magenta("Loading..");
+            FckLogger.Magenta("Loading...");
             MelonCoroutines.Start(FckShield.Bypass());
         }
 
         public override void OnApplicationLateStart()
         {
-            FckLogger.Magenta("Checking For Mods..");
+            FckLogger.Magenta("Scanning For Mods...");
+
             if (CheckForMelon("emmVRCLoader"))
             {
                 FckLogger.Blue("emmVRCLoader Found");
-                MelonCoroutines.Start(FckEmm.FckCheck());
+                FckEmm.FckCheck();
             }
-            FckLogger.Magenta("Initialized! Enjoy Your Freedom");
+
+            if (CheckForMelon("VRChatUtilityKit"))
+            {
+                FckLogger.Blue("VRChatUtilityKit Found");
+                FckVRCUK.FckCheck();
+            }
+
+            FckLogger.Magenta("Initialized! Enjoy Your Freedom!");
         }
 
         private bool CheckForMelon(string name){
