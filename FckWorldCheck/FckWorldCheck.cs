@@ -1,4 +1,5 @@
 ﻿using MelonLoader;
+using System;
 using System.Linq;
 
 namespace FckWorldCheck
@@ -19,13 +20,21 @@ namespace FckWorldCheck
             if (CheckForMelon("emmVRCLoader"))
             {
                 FckLogger.Blue("emmVRCLoader Found");
+                FckEmm.FckEmmInit();
                 FckEmm.FckCheck();
+                FckEmm.FckNoUnlimitedFavs();    
             }
 
             if (CheckForMelon("VRChatUtilityKit"))
             {
                 FckLogger.Blue("VRChatUtilityKit Found");
                 FckVRCUK.FckCheck();
+            }
+
+            if (CheckForMelon("SeatMod"))
+            {
+                FckLogger.Blue("SeatMod Found");
+                FckSeatMod.FckCheck();
             }
 
             FckLogger.Magenta("Initialized! Enjoy Your Freedom!");

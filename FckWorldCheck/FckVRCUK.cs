@@ -18,7 +18,7 @@ namespace FckWorldCheck
 
                 var p = typeof(VRChatUtilityKit.Utilities.VRCUtils).GetProperty("AreRiskyFunctionsAllowed", BindingFlags.Public | BindingFlags.Static).GetGetMethod(false);
 
-                FckLogger.Msg("Patching VRChatUtilityKit...");
+                //FckLogger.Msg("Patching VRChatUtilityKit...");
 
                 h.Patch(p, postfix: new HarmonyMethod(typeof(FckVRCUK).GetMethod(nameof(AreRiskyFunctionsAllowedPatch), BindingFlags.NonPublic | BindingFlags.Static)));
             }
@@ -36,10 +36,9 @@ namespace FckWorldCheck
                 count++;
             }
 
-            FckLogger.Msg($"Patches Applied: {count}/{nPatches}");
-
             if (count != nPatches)
             {
+                FckLogger.Msg($"Patches Applied: {count}/{nPatches}");
                 FckLogger.Error("Failed To Patch VRChatUtilityKit!");
                 return;
             }

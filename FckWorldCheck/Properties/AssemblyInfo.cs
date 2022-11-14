@@ -41,3 +41,5 @@ using MelonLoader;
 [assembly: MelonInfo(typeof(FckWorldCheck.FckWorldCheck), "FckWorldCheck", "1.1.0", "Xavi")]
 [assembly: MelonGame("VRChat", "VRChat")]
 [assembly: MelonPriority(-100)]
+
+[assembly: MelonOptionalDependencies("emmVRCLoader", "VRChatUtilityKit", "SeatMod")]
